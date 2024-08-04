@@ -80,7 +80,7 @@ export default function Home() {
   return (
     <>
     <Navbar />
-    <div className="flex min-h-screen flex-col items-center justify-between p-4">
+    <div className="flex flex-col items-center justify-between p-4">
       <h1 className="text-4xl font-bold">IMI Store</h1>
       <div className="flex gap-2">
         {/* -------------------ตะกร้าสินค้า-----------------------------------  */}
@@ -146,16 +146,14 @@ export default function Home() {
         {/* -------------------จบตะกร้าสินค้า--------------------------  */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 rounded-lg mt-4 border-2 border-cyan-500">
  
-        {products.map((product:Product) => (
-           <ProductCard 
-              key={product.id}
-              imageSrc={product.imageSrc}
-              name={product.name}
-              price={product.price}
-              addToCart={addToCart}
-          />
-         ))
-        }
+          {products.map((product:Product) => (
+            <ProductCard 
+                key={product.id}
+                product={product}
+                addToCart={addToCart}
+            />
+          ))
+          }
         </div>
       </div>
     </div>
