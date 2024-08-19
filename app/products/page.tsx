@@ -22,18 +22,23 @@ interface CartItem extends Product {
 export default function ProductPage() {
 
   // ********************************************************
-  const productUrl = `${process.env.API_URL}/products`
+  const productUrl = `${process.env.NEXT_PUBLIC_WEB_APP_URL}?sheetName=Products`
 
   const [products, setProducts] =  useState<Product[]>([])
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   async function getProducts(): Promise<void> {
-    const res = await fetch(productUrl);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
+    try {
+      const response = await fetch(productUrl)
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+    
+      const result = await response.json()
+      setProducts(result)
+    } catch (err) {
+      console.error(err)
     }
-    const result = await res.json();
-    setProducts(result.data);
   }
 
   function addToCart (product: Product): void {
