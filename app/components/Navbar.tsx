@@ -55,10 +55,10 @@ export default function Navbar() {
               <li>
                 <a
                   className="text-gray-500 transition hover:text-gray-500/75"
-                  href="#"
+                  href="/create-product"
                 >
                   {" "}
-                  Projects{" "}
+                  สร้างสินค้า{" "}
                 </a>
               </li>
 
